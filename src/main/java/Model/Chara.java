@@ -14,7 +14,7 @@ public class Chara {
 
     //constructors
 
-    public Chara(String name, int level, int attack, int defense) {
+    public Chara(String name, int level, int attack, int defense) {     //Gets specific character. Used for player.
         this.level = level;
         this.name = name;
         this.health = 50;
@@ -22,9 +22,13 @@ public class Chara {
         this.defense = defense;
         weapon = new Weapon(level / 2);
         armor = new Armor(level / 2);
+
+        System.out.println("You start with a " + weapon.getDescription() +
+                " and wear " + armor.getDescription() + ".");
+
     }
 
-    public Chara() {        //Gets a random opponent
+    public Chara() {        //Gets a random opponent. This probably won't be used.
 
         name = getVillainName();
         health = 50;
@@ -124,10 +128,28 @@ public class Chara {
             } else{
                 System.out.println("You decide to keep your old " + armor.getType() + ".");
             }
+        }
+    }
 
+
+    public boolean victory(){
+        levelUp();
+
+        if (App.askUserFor("Do you want to continue? ").equals("y")) {
+            getLoot();
+            return true;
+
+        } else {
+            System.out.println("You decide to get out while the getting's good. You reached level " + level + " before retiring.");
+            return false;
         }
 
 
+    }
+
+    public boolean defeat(){
+        System.out.println("You have died. You reached level " + level + " before perishing.");
+        return false;
     }
 
 

@@ -26,8 +26,7 @@ public class App {
         Chara player = Chara.createPlayerCharacter();     //Creates player character
 
 
-        System.out.println("You start with a " + player.getWeapon().getDescription() +
-                           " and wear " + player.getArmor().getDescription() + ".");
+
 
 
         do {
@@ -42,20 +41,18 @@ public class App {
 
             if (brawl.getOutcome() == "victory") {
 
-                player.levelUp();
+                continueFight = player.victory();
 
-                if (askUserFor("Do you want to continue? ").equals("y")) {
-                    continueFight = true;
-                    player.getLoot();
-                } else {
-                    continueFight = false;
-                    System.out.println("You decide to get out while the getting's good. You reached level " + player.getLevel() + " before retiring.");
-                }
+
+
+
 
             } else {
-                System.out.println("You have died. You reached level " + player.getLevel() + " before perishing.");
-                continueFight = false;
+
+                continueFight = player.defeat();
+
             }
+
 
 
         } while (continueFight);

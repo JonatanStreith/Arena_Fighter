@@ -47,17 +47,17 @@ public class Round {
         return playerDealsDamage;
     }
 
-    public void setPlayerDealsDamage(int playerDealsDamage) {
-        this.playerDealsDamage = playerDealsDamage;
-    }
+//    public void setPlayerDealsDamage(int playerDealsDamage) {
+//        this.playerDealsDamage = playerDealsDamage;
+//    }
 
     public int getOpponentDealsDamage() {
         return opponentDealsDamage;
     }
 
-    public void setOpponentDealsDamage(int opponentDealsDamage) {
-        this.opponentDealsDamage = opponentDealsDamage;
-    }
+//    public void setOpponentDealsDamage(int opponentDealsDamage) {
+//        this.opponentDealsDamage = opponentDealsDamage;
+//    }
 
     public String getRoundMessage() {
         return roundMessage;
