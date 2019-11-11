@@ -2,6 +2,7 @@ package jonst;
 
 import Model.Battle;
 import Model.Chara;
+import Model.Weapon;
 
 import java.util.Scanner;
 
@@ -24,14 +25,13 @@ public class App {
         int playerAttack = Integer.parseInt((askUserFor("Set your attack: ")));
         int playerDefense = Integer.parseInt((askUserFor("Set your defense: ")));
 
-        Chara player = new Chara(playerName, playerAttack, playerDefense );     //Creates player character
-
+        Chara player = new Chara(playerName, playerAttack, playerDefense);     //Creates player character
 
 
         do {
             Chara opponent = new Chara();   //Creates an opponent
 
-            System.out.println("You face " + opponent.getName() + " in the arena!\n They have an attack of " + opponent.getAttack() + " and defense of "+ opponent.getDefense() +"!");
+            System.out.println("You face " + opponent.getName() + " in the arena!\n They have an attack of " + opponent.getAttack() + " and defense of " + opponent.getDefense() + "!");
 
             askUserFor("[Press return to continue]");
 
@@ -40,10 +40,9 @@ public class App {
             brawl.fight();
 
 
+            if (brawl.getOutcome() == "victory") {
 
-            if(brawl.getOutcome() == "victory"){
-
-                if(askUserFor("Do you want to continue? ").equals("y"))
+                if (askUserFor("Do you want to continue? ").equals("y"))
                     continueFight = true;
                 else
                     continueFight = false;
@@ -55,11 +54,29 @@ public class App {
             }
 
 
+            if (continueFight) {        //If you continue to fight, you get a new weapon or armor
+                System.out.println("You receive spoils of victory!");
+
+                boolean youGetWeapon = (Math.random() > 0.5) ? true : false;    //Fifty-fifty or so, you get weapon or armor
+
+                if(youGetWeapon){       //If you get a wapon
+                    Weapon newWeapon = new Weapon();
+                    String choice = askUserFor("You get a " + newWeapon.getDescription() + "! Do you want to use it instead of your current weapon? (y/n)");
+
+                    if(choice.toLowerCase().equals("y")){
+
+                    } else{}
 
 
+                } else{                 //If you get an armor
 
-        } while(continueFight);
+                }
 
+
+            }
+
+
+        } while (continueFight);
 
 
         System.out.println("Thanks for playing!");

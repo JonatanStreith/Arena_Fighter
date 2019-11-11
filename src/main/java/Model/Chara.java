@@ -5,20 +5,26 @@ public class Chara {
     private int health;
     private int attack;
     private int defense;
+    private Weapon weapon;
+    private Armor armor;
 
     public Chara(String name, int attack, int defense) {
         this.name = name;
         this.health = 50;
         this.attack = attack;
         this.defense = defense;
+        weapon = new Weapon(0);
+        armor = new Armor(0);
     }
 
     public Chara() {        //Gets a random opponent
 
-        name = getVillainName();       //Later make function to get random name from list
+        name = getVillainName();
         health = 50;
         attack = (int)Math.ceil(Math.random() * 5);
         defense = (int)Math.ceil(Math.random() * 5);
+        weapon = new Weapon();
+        armor = new Armor();
     }
 
     public String getName() {
@@ -64,13 +70,23 @@ public class Chara {
                 "Blackthorne",
                 "Silktongs of the Fell Order",
                 "Donut Steel",
-                "Five ducks in a man costume"
+                "Five ducks in a man costume",
+                "The Butcher",
+                "Bob from Accounting"
         };
 
 
         return names[(int)Math.floor(Math.random() * names.length)];
 
 
+    }
+
+    public void setWeapon(Weapon weapon){
+        this.weapon = weapon;
+    }
+
+    public void setArmor(Armor armor){
+        this.armor = armor;
     }
 }
 
