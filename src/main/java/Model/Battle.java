@@ -4,23 +4,23 @@ public class Battle {
     private Chara player;
     private Chara opponent;
     private String outcome;
+    private int roundsPassed = 0;
 
     public Battle(Chara player, Chara opponent) {
         this.player = player;
         this.opponent = opponent;
-    }
 
-
-    public void fight() {
         player.setHealth(50);
-        opponent.setHealth(50);
 
-        int roundsPassed = 0;
+
 
         while (player.getHealth() > 0 && opponent.getHealth() > 0 && roundsPassed <50) {     //While both combatants are alive, and fifty rounds haven't passed
             //fight!
 
-            Round diceToss = new Round(player.getName(), player.getAttack(), player.getDefense(), opponent.getName(), opponent.getAttack(), opponent.getDefense());
+            Round diceToss = new Round(player.getName(), player.getAttack(), player.getDefense(),
+                    player.getWeapon().getBonus(), player.getArmor().getBonus(),
+                    opponent.getName(), opponent.getAttack(), opponent.getDefense(),
+                    opponent.getWeapon().getBonus(), opponent.getArmor().getBonus());
 
             player.reduceHealthBy(diceToss.getOpponentDealsDamage());
             opponent.reduceHealthBy(diceToss.getPlayerDealsDamage());
@@ -53,7 +53,13 @@ public class Battle {
             }
 
         }
+
+
+
     }
+
+
+
 
 
     public String getOutcome() {

@@ -14,7 +14,7 @@ public class CharaTest {
         int defense = 3;
 
 
-        Chara steve = new Chara(name, attack, defense);
+        Chara steve = new Chara(name, 1, attack, defense);
 
         assertEquals(steve.getName(), "Steve");
         assertEquals(steve.getHealth(), 50);
@@ -35,6 +35,21 @@ public class CharaTest {
         assertEquals(villain.getHealth(), 50);
         assertTrue(villain.getDefense()>0 && villain.getDefense()<6);
         assertTrue(villain.getDefense()>0 && villain.getDefense()<6);
+
+
+    }
+
+
+    @Test
+    public void getMatchingLevelTest() {
+
+
+        //Result should be within a deviation of 3 from original number
+
+            int result = Chara.getMatchingLevel(5);
+
+
+        assertEquals(5, result, 3);
 
 
     }

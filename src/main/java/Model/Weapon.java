@@ -2,28 +2,28 @@ package Model;
 
 public class Weapon extends Equipment {
 
-    private String weaponType;
 
-    public Weapon(String weaponType, String material, int bonus) {
-        this.weaponType = weaponType;
+
+    public Weapon(String type, String material, int bonus) {
+        this.type = type;
         this.material = material;
         this.bonus = bonus;
-        description = "+" + bonus + " " + material + " " + weaponType;
+        description = "+" + bonus + " " + material + " " + type;
     }
 
-    public Weapon(int bonus){
-        weaponType = Weapon.randomWeaponType();
+    public Weapon(int level){
+        type = Weapon.randomWeaponType();
         material = Weapon.randomMaterial();
-        this.bonus = bonus;
-        description = "+" + bonus + " " + material + " " + weaponType;
+        this.bonus = Weapon.randomBonus(level);
+        description = "+" + bonus + " " + material + " " + type;
     }
 
 
     public Weapon(){
-        weaponType = Weapon.randomWeaponType();
+        type = Weapon.randomWeaponType();
         material = Weapon.randomMaterial();
         bonus = Weapon.randomBonus();
-        description = "+" + bonus + " " + material + " " + weaponType;
+        description = "+" + bonus + " " + material + " " + type;
     }
 
 
@@ -31,14 +31,10 @@ public class Weapon extends Equipment {
 
         final String[] WEAPONTYPES = {"axe", "sword", "spear", "bow", "hammer", "dagger", "blunderbuss", "mace", "staff"};
 
-        String type = WEAPONTYPES[(int)Math.floor(Math.random() * WEAPONTYPES.length)];
-
-        return type;
+        return WEAPONTYPES[(int)Math.floor(Math.random() * WEAPONTYPES.length)];
     }
 
-    public String getWeaponType() {
-        return weaponType;
-    }
+
 
 
 

@@ -9,17 +9,18 @@ public class Round {
     private int opponentDealsDamage = 0;
     private String roundMessage;
 
-    public Round(String playerName, int playerAttack, int playerDefense, String opponentName, int opponentAttack, int opponentDefense) {
+    public Round(String playerName, int playerAttack, int playerDefense, int playerWeapon, int playerArmor,
+                 String opponentName, int opponentAttack, int opponentDefense, int opponentWeapon, int opponentArmor) {
         playerDice = (int) Math.ceil(Math.random() * 6);
         opponentDice = (int) Math.ceil(Math.random() * 6);
 
-        if ((playerDice + playerAttack) / 2 > opponentDefense) {
+        if ((playerDice + playerAttack + playerWeapon) / 2 > (opponentDefense + opponentArmor)) {
             playerHits = true;
-            playerDealsDamage = (playerDice + playerAttack);
+            playerDealsDamage = (playerDice + playerAttack + playerWeapon);
         }
-        if ((opponentDice + opponentAttack) / 2 > playerDefense) {
+        if ((opponentDice + opponentAttack + opponentWeapon) / 2 > (playerDefense + playerArmor)) {
             opponentHits = true;
-            opponentDealsDamage = (opponentDice + opponentAttack);
+            opponentDealsDamage = (opponentDice + opponentAttack + opponentWeapon);
         }
 
         roundMessage = message(playerName, opponentName);

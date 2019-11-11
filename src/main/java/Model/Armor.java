@@ -2,27 +2,27 @@ package Model;
 
 public class Armor extends Equipment {
 
-    private String armorType;
 
-    public Armor(String armorType, String material, int bonus) {
-        this.armorType = armorType;
+
+    public Armor(String Type, String material, int bonus) {
+        this.type = Type;
         this.material = material;
         this.bonus = bonus;
-        description = "+" + bonus + " " + material + " " + armorType;
+        description = "+" + bonus + " " + material + " " + Type;
     }
 
-    public Armor(int bonus){
-        armorType = Armor.randomArmorType();
+    public Armor(int level){
+        type = Armor.randomArmorType();
         material = Armor.randomMaterial();
-        this.bonus = bonus;
-        description = "+" + bonus + " " + material + " " + armorType;
+        this.bonus = Armor.randomBonus(level);
+        description = "+" + bonus + " " + material + " " + type;
     }
 
     public Armor(){
-        armorType = Armor.randomArmorType();
+        type = Armor.randomArmorType();
         material = Armor.randomMaterial();
         bonus = Armor.randomBonus();
-        description = "+" + bonus + " " + material + " " + armorType;
+        description = "+" + bonus + " " + material + " " + type;
     }
 
 
@@ -30,13 +30,9 @@ public class Armor extends Equipment {
 
         final String[] ARMORTYPES = {"shield", "breastplate", "suit", "helmet", "gauntlets", "boots", "cape", "ring", "amulet"};
 
-        String type = ARMORTYPES[(int)Math.floor(Math.random() * ARMORTYPES.length)];
 
-        return type;
-    }
 
-    public String getArmorType() {
-        return armorType;
+        return ARMORTYPES[(int)Math.floor(Math.random() * ARMORTYPES.length)];
     }
 
 
