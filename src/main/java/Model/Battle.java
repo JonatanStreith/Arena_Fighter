@@ -5,12 +5,14 @@ public class Battle {
     private Chara opponent;
     private String outcome;
     private int roundsPassed = 0;
+    private StringBuilder battleLog;
 
     public Battle(Chara player, Chara opponent) {
         this.player = player;
         this.opponent = opponent;
+        battleLog = new StringBuilder();        //Logs the outcome of each round.
 
-        player.setHealth(50);
+        player.setHealth(player.getMaxHealth());    //Heal up to max
 
 
         while (player.getHealth() > 0 && opponent.getHealth() > 0 && roundsPassed < 50) {     //While both combatants are alive, and fifty rounds haven't passed
@@ -18,12 +20,19 @@ public class Battle {
 
             Round diceToss = new Round(player, opponent);
 
-            player.reduceHealthBy(diceToss.getOpponentDealsDamage());
-            opponent.reduceHealthBy(diceToss.getPlayerDealsDamage());
 
-            System.out.println(diceToss.getRoundMessage());
+            if(diceToss.isPlayerHits())
+                opponent.reduceHealthBy(diceToss.getPlayerDealsDamage());
+            if(diceToss.isOpponentHits())
+                player.reduceHealthBy(diceToss.getOpponentDealsDamage());
+
+
+            battleLog.append(diceToss.getRoundMessage());
+
             roundsPassed++;
         }
+
+        System.out.println(battleLog);
 
         determineOutcome();
     }

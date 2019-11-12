@@ -30,32 +30,32 @@ public class App {
 
 
         do {
-            Chara opponent = new Chara(Chara.getMatchingLevel(player.getLevel()));   //Creates an opponent of suitable level
+            Chara opponent = new Chara(player.getLevel());   //Creates an opponent of suitable level, within three levels dif.
 
-            askUserFor("[Press return to continue]");
 
-            Battle brawl = new Battle(player, opponent);
+
+            askUserFor("[Press return to continue]");   //Just a pause.
+
+
+
+            Battle brawl = new Battle(player, opponent);        //This is where the carnage happens.
 
 
 
 
             if (brawl.getOutcome() == "victory") {
 
-                continueFight = player.victory(player, opponent);
-
-
-
-
+                continueFight = player.victory(player, opponent);   //Needs chara references for looting and stuff
 
             } else {
 
-                continueFight = player.defeat();
+                continueFight = player.defeat();        //Game over.
 
             }
 
 
 
-        } while (continueFight);
+        } while (continueFight);        //Loop runs once, then continues to run until you die or retire.
 
 
         System.out.println("Thanks for playing!");

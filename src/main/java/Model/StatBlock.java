@@ -2,13 +2,16 @@ package Model;
 
 public class StatBlock {
 
+    private String profession;
+
     private int strength;
     private int dexterity;
     private int constitution;
     private int wisdom;
 
 
-    public StatBlock(int strength, int dexterity, int constitution, int wisdom) {
+    public StatBlock(String profession, int strength, int dexterity, int constitution, int wisdom) {
+        this.profession = profession;
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
@@ -24,6 +27,7 @@ public class StatBlock {
     }
 
     public StatBlock() {
+        profession= "commoner";
         strength = (int) Math.ceil(Math.random() * 5);
         dexterity = (int) Math.ceil(Math.random() * 5);
         constitution = (int) Math.ceil(Math.random() * 5);
@@ -62,5 +66,14 @@ public class StatBlock {
 
     public void setWisdom(int wisdom) {
         this.wisdom = wisdom;
+    }
+
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 }
