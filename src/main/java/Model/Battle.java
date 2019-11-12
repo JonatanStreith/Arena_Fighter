@@ -16,10 +16,7 @@ public class Battle {
         while (player.getHealth() > 0 && opponent.getHealth() > 0 && roundsPassed < 50) {     //While both combatants are alive, and fifty rounds haven't passed
             //fight!
 
-            Round diceToss = new Round(player.getName(), player.getAttack(), player.getDefense(),
-                    player.getWeapon().getBonus(), player.getArmor().getBonus(),
-                    opponent.getName(), opponent.getAttack(), opponent.getDefense(),
-                    opponent.getWeapon().getBonus(), opponent.getArmor().getBonus());
+            Round diceToss = new Round(player, opponent);
 
             player.reduceHealthBy(diceToss.getOpponentDealsDamage());
             opponent.reduceHealthBy(diceToss.getPlayerDealsDamage());

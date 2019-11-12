@@ -14,12 +14,12 @@ public class CharaTest {
         int defense = 3;
 
 
-        Chara steve = new Chara(name, 1, attack, defense);
+        Chara steve = new Chara(name, 1, 5, 4, 3, 2);
 
         assertEquals(steve.getName(), "Steve");
         assertEquals(steve.getHealth(), 50);
-        assertEquals(steve.getAttack(), 5);
-        assertEquals(steve.getDefense(), 3);
+        assertEquals(steve.getStats().getStrength(), 5);
+        assertEquals(steve.getStats().getConstitution(), 3);
 
     }
 
@@ -33,8 +33,8 @@ public class CharaTest {
 
         assertEquals(villain.getName(), "Villain");
         assertEquals(villain.getHealth(), 50);
-        assertTrue(villain.getDefense()>0 && villain.getDefense()<6);
-        assertTrue(villain.getDefense()>0 && villain.getDefense()<6);
+        assertTrue(villain.getStats().getConstitution()>0 && villain.getStats().getConstitution()<6);
+        assertTrue(villain.getStats().getStrength()>0 && villain.getStats().getStrength()<6);
 
 
     }

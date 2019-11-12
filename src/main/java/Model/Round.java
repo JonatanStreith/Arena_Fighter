@@ -1,6 +1,8 @@
 package Model;
 
 public class Round {
+    private Chara player;
+    private Chara opponent;
     private int playerDice;
     private int opponentDice;
     private boolean playerHits = false;
@@ -9,55 +11,92 @@ public class Round {
     private int opponentDealsDamage = 0;
     private String roundMessage;
 
-    public Round(String playerName, int playerAttack, int playerDefense, int playerWeapon, int playerArmor,
-                 String opponentName, int opponentAttack, int opponentDefense, int opponentWeapon, int opponentArmor) {
+    public Round(Chara player, Chara opponent) {
+        this.player = player;
+        this.opponent = opponent;
         playerDice = (int) Math.ceil(Math.random() * 6);
         opponentDice = (int) Math.ceil(Math.random() * 6);
 
-        if ((playerDice + playerAttack + playerWeapon) / 2 > (opponentDefense + opponentArmor)) {
+        if ((playerDice + player.getStats().getDexterity() + player.getInventory().getWeapon().getBonus()) / 2 > (opponent.getStats().getWisdom() + opponent.getInventory().getArmor().getBonus())) {
             playerHits = true;
-            playerDealsDamage = (playerDice + playerAttack + playerWeapon);
+            playerDealsDamage = (player.getStats().getStrength() - opponent.getStats().getConstitution() + player.getInventory().getWeapon().getBonus());
         }
-        if ((opponentDice + opponentAttack + opponentWeapon) / 2 > (playerDefense + playerArmor)) {
+        if ((opponentDice + opponent.getStats().getDexterity() + opponent.getInventory().getWeapon().getBonus()) / 2 > (player.getStats().getWisdom() + player.getInventory().getArmor().getBonus())) {
             opponentHits = true;
-            opponentDealsDamage = (opponentDice + opponentAttack + opponentWeapon);
+            opponentDealsDamage = (opponent.getStats().getStrength() - player.getStats().getConstitution() + opponent.getInventory().getWeapon().getBonus());
         }
 
-        roundMessage = message(playerName, opponentName);
+        roundMessage = message();
     }
 
 
-    public String message(String playerName, String opponentName) {
+    public String message() {
         String result;
         if (playerHits && opponentHits)
-            result = playerName + " hits " + opponentName + " for " + playerDealsDamage +
-                    " damage, but " + opponentName + " counters for " + opponentDealsDamage + "damage!";
+            result = dualHit();
         else if(playerHits)
-            result = playerName + " hits " + opponentName + " for " + playerDealsDamage + " damage!";
+            result = playerHits();
         else if(opponentHits)
-            result = opponentName + " hits " + playerName + " for " + opponentDealsDamage + " damage!";
+            result = opponentHits();
         else
-            result = "Both combatants miss!";
+            result = bothMiss();
 
         return result;
     }
+
+    public String dualHit(){
+        String[] lines = {
+                player.getName() + " hits " + opponent.getName() + " for " + playerDealsDamage + " damage, but " + opponent.getName() + " counters for " + opponentDealsDamage + "damage!",
+                "Both fighters exchange a flurry of blows! " + player.getName() + " delivers " + playerDealsDamage + " to " + opponent.getName() + ", but takes " + opponentDealsDamage + " in return!",
+                opponent.getName() + " strikes " + player.getName() + " for " + opponentDealsDamage + " damage, but leaves themselves open for a counterstrike, taking " + playerDealsDamage + " from " + player.getName()
+        };
+
+        return lines[(int) Math.floor(Math.random() * lines.length)];
+    }
+
+
+    public String playerHits(){
+        String[] lines = {
+                player.getName() + " slashes their foe, " + opponent.getName() + ", for " + playerDealsDamage + " damage!",
+                player.getName() + " catches their opponent off-guard and delivers a devastating strike for " + playerDealsDamage + " damage!",
+                player.getName() + " presses their advantage! The helpless " + opponent.getName() + " takes " + playerDealsDamage + " damage as they are mauled by the attack!"
+        };
+
+        return lines[(int) Math.floor(Math.random() * lines.length)];
+    }
+
+    public String opponentHits(){
+        String[] lines = {
+                opponent.getName() + " sneaks up from behind and stabs " + player.getName() + " for " + opponentDealsDamage + " damage!",
+                opponent.getName() + " gets the better of their quarry, and savagely beats " + player.getName() + " for " + opponentDealsDamage + " damage!",
+                opponent.getName() + " gets in a sharp blow, and causes " + opponentDealsDamage + " damage!"
+        };
+
+        return lines[(int) Math.floor(Math.random() * lines.length)];
+    }
+
+    public String bothMiss(){
+        String[] lines = {
+                opponent.getName() + " and " + player.getName() + " lock weapons for a drawn-out moment, and sparks fly!",
+                player.getName() + " swings wildly, while " + opponent.getName() + " dodges out of the way!",
+                opponent.getName() + " misses completely!",
+                player.getName() + " misses completely!"
+                     };
+
+        return lines[(int) Math.floor(Math.random() * lines.length)];
+    }
+
+
+
 
 
     public int getPlayerDealsDamage() {
         return playerDealsDamage;
     }
 
-//    public void setPlayerDealsDamage(int playerDealsDamage) {
-//        this.playerDealsDamage = playerDealsDamage;
-//    }
-
     public int getOpponentDealsDamage() {
         return opponentDealsDamage;
     }
-
-//    public void setOpponentDealsDamage(int opponentDealsDamage) {
-//        this.opponentDealsDamage = opponentDealsDamage;
-//    }
 
     public String getRoundMessage() {
         return roundMessage;

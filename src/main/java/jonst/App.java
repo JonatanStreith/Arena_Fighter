@@ -41,7 +41,7 @@ public class App {
 
             if (brawl.getOutcome() == "victory") {
 
-                continueFight = player.victory();
+                continueFight = player.victory(player, opponent);
 
 
 
