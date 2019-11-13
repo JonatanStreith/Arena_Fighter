@@ -18,14 +18,6 @@ public class StatBlock {
         this.wisdom = wisdom;
     }
 
-    public StatBlock(int level) {
-        strength = (int) Math.ceil(Math.random() * level / 2);
-        dexterity = (int) Math.ceil(Math.random() * level / 2);
-        constitution = (int) Math.ceil(Math.random() * level / 2);
-        wisdom = (int) Math.ceil(Math.random() * level / 2);
-
-    }
-
     public StatBlock() {
         profession= "commoner";
         strength = (int) Math.ceil(Math.random() * 5);

@@ -28,11 +28,11 @@ public class Armor extends Equipment {
 
     public static String randomArmorType() {
 
-        final String[] ARMORTYPES = {"shield", "breastplate", "suit", "helmet", "gauntlets", "boots", "cape", "ring", "amulet"};
+        final String[] armorTypes = {"shield", "breastplate", "suit", "helmet", "gauntlets", "boots", "cape", "ring", "amulet"};
 
 
 
-        return ARMORTYPES[(int)Math.floor(Math.random() * ARMORTYPES.length)];
+        return armorTypes[(int)Math.floor(Math.random() * armorTypes.length)];
     }
 
 

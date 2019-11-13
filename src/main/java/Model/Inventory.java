@@ -19,6 +19,9 @@ public class Inventory {
         armor = new Armor();
     }
 
+
+
+    //Getters setters
     public Weapon getWeapon() {
         return weapon;
     }

@@ -23,21 +23,21 @@ public class CharaTest {
 //
 //    }
 
-//    @Test
-//    public void VillainConstTest() {
-//
-//
-//
-//        Chara villain = new Chara();
-//
-//
-//        assertEquals(villain.getName(), "Villain");
-//        assertEquals(villain.getHealth(), 50);
-//        assertTrue(villain.getStats().getConstitution()>0 && villain.getStats().getConstitution()<6);
-//        assertTrue(villain.getStats().getStrength()>0 && villain.getStats().getStrength()<6);
-//
-//
-//    }
+    @Test
+    public void VillainConstTest() {
+
+
+
+        Chara villain = new Chara(1);
+
+
+        assertNotNull(villain.getName());
+        assertTrue(villain.getHealth() > 20);
+        assertNotNull(villain.getStats());
+        assertNotNull(villain.getInventory());
+
+
+    }
 
 
     @Test

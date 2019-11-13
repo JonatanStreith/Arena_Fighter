@@ -29,9 +29,9 @@ public class Weapon extends Equipment {
 
     public static String randomWeaponType() {
 
-        final String[] WEAPONTYPES = {"axe", "sword", "spear", "bow", "hammer", "dagger", "blunderbuss", "mace", "staff"};
+        final String[] weaponTypes = {"axe", "sword", "spear", "bow", "hammer", "dagger", "blunderbuss", "mace", "staff"};
 
-        return WEAPONTYPES[(int)Math.floor(Math.random() * WEAPONTYPES.length)];
+        return weaponTypes[(int)Math.floor(Math.random() * weaponTypes.length)];
     }
 
 
