@@ -11,14 +11,12 @@ public class Chara {
     private int health;
 
 
-
     private StatBlock stats;
     private Inventory inventory;
 
 
     //    private int attack;
 //    private int defense;
-
 
 
     //constructors
@@ -29,25 +27,18 @@ public class Chara {
         this.stats = stats;
         inventory = new Inventory(level);
 
-        maxHealth = 20 + (stats.getConstitution()*5);
+        maxHealth = 20 + (stats.getConstitution() * 5);
         health = maxHealth;
 
 
         System.out.println("You are a " + stats.getProfession() + ". You start with a " + inventory.getWeapon().getDescription() +
                 " and wear " + inventory.getArmor().getDescription() + ".");
 
-        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
+
 
     }
 
-//    public Chara() {        //Gets a random opponent. This probably won't be used.
-//
-//        name = getVillainName();
-//        stats = new StatBlock();
-//        inventory = new Inventory();
-//        maxHealth = 20 + (stats.getConstitution()*5);
-//        health = maxHealth;
-//    }
+
 
     public Chara(int level) {        //Gets a random LEVELED opponent
 
@@ -56,13 +47,12 @@ public class Chara {
         stats = getStats(getRandomProfession());
         inventory = new Inventory(level);
 
-        maxHealth = 20 + (stats.getConstitution()*5);
+        maxHealth = 20 + (stats.getConstitution() * 5);
         health = maxHealth;
 
         System.out.print("You face " + name + ", a level " + level + " " + stats.getProfession() + ", in the arena!\n");
         System.out.println("They have a " + inventory.getWeapon().getDescription() + " and wears " + inventory.getArmor().getDescription() + "!");
 
-        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
     }
 
 
@@ -97,48 +87,44 @@ public class Chara {
         return newLevel;
     }
 
-    public static String getRandomProfession(){
+    public static String getRandomProfession() {
         String[] classes = {"F", "R", "C", "M", "B", "W", "U"};
 
         return classes[(int) Math.floor(Math.random() * classes.length)];
     }
 
-    public static StatBlock getStats(String profession){
+    public static StatBlock getStats(String profession) {
 
-        switch(profession.toUpperCase()){
+        switch (profession.toUpperCase()) {
             case "F":
                 //System.out.println("You have chosen: Fighter.");
-return new StatBlock("fighter",6,4,4,2);
+                return new StatBlock("fighter", 6, 4, 4, 2);
 
             case "R":
                 //System.out.println("You have chosen: Rogue.");
-                return new StatBlock("rogue",2,6,4,4);
+                return new StatBlock("rogue", 2, 6, 4, 4);
 
             case "C":
                 //System.out.println("You have chosen: Cleric.");
-                return new StatBlock("cleric",4,2,4,6);
+                return new StatBlock("cleric", 4, 2, 4, 6);
 
             case "M":
                 //System.out.println("You have chosen: Monk.");
-                return new StatBlock("monk",4,4,4,4);
+                return new StatBlock("monk", 4, 4, 4, 4);
 
             case "B":
                 //System.out.println("You have chosen: Barbarian.");
-                return new StatBlock("barbarian",4,3,6,3);
+                return new StatBlock("barbarian", 4, 3, 6, 3);
 
             case "W":
                 //System.out.println("You have chosen: Wizard.");
-                return new StatBlock("wizard",3,5,2,6);
+                return new StatBlock("wizard", 3, 5, 2, 6);
 
 
             default:
                 //System.out.println("You have chosen: Commoner.");
                 return new StatBlock();
         }
-
-
-
-
 
 
     }
@@ -199,7 +185,7 @@ return new StatBlock("fighter",6,4,4,2);
 
     public void claimLoot(Chara player, Chara opponent) {
         System.out.println("You may claim your opponent's weapon (a " + opponent.getInventory().getWeapon().getDescription() + "), or their armor (a " + opponent.getInventory().getArmor().getDescription() + ").");
-        System.out.println("(You have a "  + player.getInventory().getWeapon().getDescription() + " and a " + player.getInventory().getArmor().getDescription() + ".)");
+        System.out.println("(You have a " + player.getInventory().getWeapon().getDescription() + " and a " + player.getInventory().getArmor().getDescription() + ".)");
 
         String choice = App.askUserFor("Which do you choose? (w/a)?");
 
