@@ -23,9 +23,9 @@ public class Battle {
             Round diceToss = new Round(player, opponent);
 
 
-            if(diceToss.isPlayerHits())
+            if (diceToss.isPlayerHits())
                 opponent.reduceHealthBy(diceToss.getPlayerDealsDamage());
-            if(diceToss.isOpponentHits())
+            if (diceToss.isOpponentHits())
                 player.reduceHealthBy(diceToss.getOpponentDealsDamage());
 
 
@@ -65,14 +65,24 @@ public class Battle {
             }
         }
 
-        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
     }
 
-
+    //Getter and Setters
     public String getOutcome() {
 
         return outcome;
     }
+
+
+    public int getRoundsPassed() {
+        return roundsPassed;
+    }
+
+
+    public StringBuilder getBattleLog() {
+        return battleLog;
+    }
+
 
 }

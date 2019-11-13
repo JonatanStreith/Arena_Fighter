@@ -26,21 +26,14 @@ public class App {
         Chara player = Chara.createPlayerCharacter();     //Creates player character
 
 
-
-
-
         do {
             Chara opponent = new Chara(player.getLevel());   //Creates an opponent of suitable level, within three levels dif.
-
 
 
             App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
 
-
             Battle brawl = new Battle(player, opponent);        //This is where the carnage happens.
-
-
 
 
             if (brawl.getOutcome() == "victory") {
@@ -52,7 +45,6 @@ public class App {
                 continueFight = player.defeat();        //Game over.
 
             }
-
 
 
         } while (continueFight);        //Loop runs once, then continues to run until you die or retire.
@@ -69,5 +61,6 @@ public class App {
         System.out.print(term);
         return inputReader.nextLine();
     }
+
 
 }

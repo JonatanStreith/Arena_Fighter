@@ -3,7 +3,6 @@ package Model;
 public class Weapon extends Equipment {
 
 
-
     public Weapon(String type, String material, int bonus) {
         this.type = type;
         this.material = material;
@@ -11,7 +10,7 @@ public class Weapon extends Equipment {
         description = "+" + bonus + " " + material + " " + type;
     }
 
-    public Weapon(int level){
+    public Weapon(int level) {
         type = Weapon.randomWeaponType();
         material = Weapon.randomMaterial();
         this.bonus = Weapon.randomBonus(level);
@@ -19,7 +18,7 @@ public class Weapon extends Equipment {
     }
 
 
-    public Weapon(){
+    public Weapon() {
         type = Weapon.randomWeaponType();
         material = Weapon.randomMaterial();
         bonus = Weapon.randomBonus();
@@ -31,11 +30,8 @@ public class Weapon extends Equipment {
 
         final String[] weaponTypes = {"axe", "sword", "spear", "bow", "hammer", "dagger", "blunderbuss", "mace", "staff"};
 
-        return weaponTypes[(int)Math.floor(Math.random() * weaponTypes.length)];
+        return weaponTypes[(int) Math.floor(Math.random() * weaponTypes.length)];
     }
-
-
-
 
 
 }

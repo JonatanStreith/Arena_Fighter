@@ -20,7 +20,6 @@ public class Inventory {
     }
 
 
-
     //Getters setters
     public Weapon getWeapon() {
         return weapon;

@@ -3,7 +3,6 @@ package Model;
 public class Armor extends Equipment {
 
 
-
     public Armor(String Type, String material, int bonus) {
         this.type = Type;
         this.material = material;
@@ -11,14 +10,14 @@ public class Armor extends Equipment {
         description = "+" + bonus + " " + material + " " + Type;
     }
 
-    public Armor(int level){
+    public Armor(int level) {
         type = Armor.randomArmorType();
         material = Armor.randomMaterial();
         this.bonus = Armor.randomBonus(level);
         description = "+" + bonus + " " + material + " " + type;
     }
 
-    public Armor(){
+    public Armor() {
         type = Armor.randomArmorType();
         material = Armor.randomMaterial();
         bonus = Armor.randomBonus();
@@ -31,10 +30,8 @@ public class Armor extends Equipment {
         final String[] armorTypes = {"shield", "breastplate", "suit", "helmet", "gauntlets", "boots", "cape", "ring", "amulet"};
 
 
-
-        return armorTypes[(int)Math.floor(Math.random() * armorTypes.length)];
+        return armorTypes[(int) Math.floor(Math.random() * armorTypes.length)];
     }
-
 
 
 }

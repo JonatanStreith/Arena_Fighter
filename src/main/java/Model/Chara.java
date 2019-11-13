@@ -35,9 +35,7 @@ public class Chara {
                 " and wear " + inventory.getArmor().getDescription() + ".");
 
 
-
     }
-
 
 
     public Chara(int level) {        //Gets a random LEVELED opponent
@@ -52,6 +50,7 @@ public class Chara {
 
         System.out.print("You face " + name + ", a level " + level + " " + stats.getProfession() + ", in the arena!\n");
         System.out.println("They have a " + inventory.getWeapon().getDescription() + " and wears " + inventory.getArmor().getDescription() + "!");
+
 
     }
 

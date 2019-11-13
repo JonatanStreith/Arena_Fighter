@@ -19,7 +19,7 @@ public class StatBlock {
     }
 
     public StatBlock() {
-        profession= "commoner";
+        profession = "commoner";
         strength = (int) Math.ceil(Math.random() * 5);
         dexterity = (int) Math.ceil(Math.random() * 5);
         constitution = (int) Math.ceil(Math.random() * 5);

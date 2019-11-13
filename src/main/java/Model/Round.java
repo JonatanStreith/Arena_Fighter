@@ -90,6 +90,8 @@ public class Round {
     }
 
 
+    //Getters and Setters
+
     public int getPlayerDealsDamage() {
         return playerDealsDamage;
     }
@@ -110,4 +112,11 @@ public class Round {
         return opponentHits;
     }
 
+    public int getPlayerDice() {
+        return playerDice;
+    }
+
+    public int getOpponentDice() {
+        return opponentDice;
+    }
 }
