@@ -34,7 +34,7 @@ public class App {
 
 
 
-            askUserFor("[Press return to continue]");   //Just a pause.
+            App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
 
 
@@ -59,6 +59,8 @@ public class App {
 
 
         System.out.println("Thanks for playing!");
+
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
         inputReader.close();
     }

@@ -36,6 +36,8 @@ public class Chara {
         System.out.println("You are a " + stats.getProfession() + ". You start with a " + inventory.getWeapon().getDescription() +
                 " and wear " + inventory.getArmor().getDescription() + ".");
 
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
+
     }
 
 //    public Chara() {        //Gets a random opponent. This probably won't be used.
@@ -59,6 +61,8 @@ public class Chara {
 
         System.out.print("You face " + name + ", a level " + level + " " + stats.getProfession() + ", in the arena!\n");
         System.out.println("They have a " + inventory.getWeapon().getDescription() + " and wears " + inventory.getArmor().getDescription() + "!");
+
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
     }
 
 
@@ -188,6 +192,9 @@ return new StatBlock("fighter",6,4,4,2);
                 System.out.println("You decide to keep your old " + inventory.getArmor().getType() + ".");
             }
         }
+
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
+
     }
 
     public void claimLoot(Chara player, Chara opponent) {
@@ -213,6 +220,7 @@ return new StatBlock("fighter",6,4,4,2);
 
         }
 
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
     }
 

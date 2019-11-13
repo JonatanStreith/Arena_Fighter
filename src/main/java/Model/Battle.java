@@ -1,5 +1,7 @@
 package Model;
 
+import jonst.App;
+
 public class Battle {
     private Chara player;
     private Chara opponent;
@@ -62,6 +64,8 @@ public class Battle {
                 outcome = "defeat";
             }
         }
+
+        App.askUserFor("\n[Press return to continue]\n");   //Just a pause.
 
     }
 
